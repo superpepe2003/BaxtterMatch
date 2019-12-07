@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".cambiarLoginRegistrationActivity"
+    android:orientation="vertical"
+    android:gravity="center_vertical">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baxtter30"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="30dp"/>
+    
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:background="@drawable/btn_principal"
+        android:layout_marginBottom="5dp"
+        android:id="@+id/btnLogin"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Registro"
+        android:background="@drawable/btn_principal"
+        android:id="@+id/btnRegistro"/>
+
+</LinearLayout>

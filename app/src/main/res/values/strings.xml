@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Baxtter Match</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="tab_text_1">Perfil</string>
+    <string name="tab_text_2">Home</string>
+    <string name="tab_text_3">Matches</string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment"></string>
+</resources>

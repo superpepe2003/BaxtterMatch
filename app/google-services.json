@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "325947555387",
+    "firebase_url": "https://baxtter-match-8a35f.firebaseio.com",
+    "project_id": "baxtter-match-8a35f",
+    "storage_bucket": "baxtter-match-8a35f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:325947555387:android:c2255af5e9d38ecadea61e",
+        "android_client_info": {
+          "package_name": "sa.soft.utopia.baxttermatch"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "325947555387-hkjgtb01u4odg2jr9g5gbel7l8j5p5da.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "sa.soft.utopia.baxttermatch",
+            "certificate_hash": "cb6740ce9a741fed25b112e9698b68790e299e81"
+          }
+        },
+        {
+          "client_id": "325947555387-3aa12ma8l14d25gqerpovaro65feio91.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAO-pugtJUNUMx3ZEzALB2SR_cRNlig00g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "325947555387-3aa12ma8l14d25gqerpovaro65feio91.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
