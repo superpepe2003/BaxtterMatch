@@ -25,6 +25,9 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class registroActivity extends AppCompatActivity {
 
     EditText txtMail, txtPass, txtNombre;
@@ -49,7 +52,7 @@ public class registroActivity extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 final FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
                 if(user!=null){
-                    Intent in = new Intent(registroActivity.this, MainActivity2.class);
+                    Intent in = new Intent(registroActivity.this, MainActivity.class);
                     startActivity(in);
                     finish();
                     return;
@@ -96,8 +99,12 @@ public class registroActivity extends AppCompatActivity {
                         {
                             String userId= mAuth.getCurrentUser().getUid();
                             DatabaseReference UserDb= FirebaseDatabase.getInstance().getReference()
-                                    .child("Users").child(radioButtonSele.getTag().toString()).child(userId).child("Nombre");
-                            UserDb.setValue(txtNombre.getText().toString());
+                                    .child("Users").child(userId);
+                            Map map = new HashMap<>();
+                            map.put("Nombre", txtNombre.getText().toString());
+                            map.put("Sexo", radioButtonSele.getTag().toString());
+                            map.put("ImagenPerfil", "default");
+                            UserDb.updateChildren(map);
                         }
                     }
                 });

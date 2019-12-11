@@ -8,6 +8,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -33,7 +35,15 @@ public class arrayAdapter extends ArrayAdapter<cards> {
         ImageView image= convertView.findViewById(R.id.image);
 
         name.setText(card_item.getNombre());
-        image.setImageResource(R.mipmap.ic_launcher);
+
+        switch (card_item.getImgPerfil()){
+            case "default":
+                Glide.with(getContext()).load(R.mipmap.ic_launcher).into(image);
+                break;
+            default:
+                Glide.with(getContext()).load(card_item.getImgPerfil()).into(image);
+                break;
+        }
 
         return convertView;
     }

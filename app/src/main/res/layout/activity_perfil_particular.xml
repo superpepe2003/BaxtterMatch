@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PerfilParticularActivity"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="100sp"
+        android:layout_height="100sp"
+        android:id="@+id/imgPerfil"
+        android:src="@drawable/ic_matches"
+        android:layout_marginBottom="20sp"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtNombre"
+        android:background="@null"
+        android:hint="@string/hint_nombre"
+        android:layout_marginBottom="20sp" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtTelefono"
+        android:background="@null"
+        android:hint="@string/hint_telefono"
+        android:layout_marginBottom="20sp"
+        android:inputType="phone"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnConfirmar"
+        android:text="@string/btn_confirmar"
+        android:background="@drawable/btn_principal"
+        android:layout_marginBottom="10sp"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnAtras"
+        android:text="@string/btn_atras"
+        android:background="@drawable/btn_principal"/>
+
+</LinearLayout>

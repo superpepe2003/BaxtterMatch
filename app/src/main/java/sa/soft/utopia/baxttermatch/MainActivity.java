@@ -28,4 +28,18 @@ public class MainActivity extends AppCompatActivity {
         tabs.setupWithViewPager(viewPager);
         tabs.getTabAt(1).select();
     }
+
+   /* @Override
+    public void onBackPressed() {
+
+        int count = getFragmentManager().getBackStackEntryCount();
+
+        if (count == 0) {
+            super.onBackPressed();
+            getFragmentManager().popBackStack();
+        } else {
+            getFragmentManager().popBackStack();//No se porqué puse lo mismo O.o
+        }
+
+    }*/
 }

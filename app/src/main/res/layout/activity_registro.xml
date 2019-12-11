@@ -20,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textEmailAddress"
-        android:hint="Email"
+        android:hint="@string/hint_email"
         android:id="@+id/txtEmail"
         android:layout_marginTop="8dp"
         />
@@ -28,7 +28,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Password"
+        android:hint="@string/hint_password"
         android:inputType="textPassword"
         android:id="@+id/txtPassword"
         android:layout_marginTop="8dp"/>
@@ -61,7 +61,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/btn_principal"
-        android:text="Registro"
+        android:text="@string/btn_registro"
         android:id="@+id/btnRegistro"
         android:layout_marginTop="24dp"/>
 

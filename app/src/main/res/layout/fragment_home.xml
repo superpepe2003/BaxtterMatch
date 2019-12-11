@@ -1,19 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Fragments.PerfilFragment">
+    tools:context=".Fragments.PerfilFragment"
+    android:orientation="vertical">
 
     <com.lorentzos.flingswipe.SwipeFlingAdapterView
         android:id="@+id/frame"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#ffeee9e2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnLogout"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:background="@android:color/white"
+        app:layout_constraintTop_toTopOf="parent"
         app:rotation_degrees="15.5"
-        tools:context=".MyActivity" />
+        android:elevation="4dp"
+        tools:context=".MyActivity"
+        android:layout_weight="5"/>
 
-</FrameLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_weight="1">
+
+        <ImageButton
+            android:id="@+id/btnNo"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/btn_redondo"
+            android:src="@drawable/ic_dislike"
+            android:elevation="4dp"/>
+
+        <ImageButton
+            android:id="@+id/btnYes"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/btn_redondo"
+            android:src="@drawable/ic_like"
+            android:elevation="4dp"
+            />
+    </LinearLayout>
+
+</LinearLayout>

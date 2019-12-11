@@ -8,4 +8,19 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment"></string>
+
+    <!--BOTONES -->
+    <string name="btn_logout">Logout</string>
+    <string name="btn_perfil">Perfil</string>
+    <string name="btn_confirmar">Confirmar</string>
+    <string name="btn_atras">Atras</string>
+    <string name="btn_registro">Registro</string>
+    <string name="btn_login">Login</string>
+
+    <!--HINT -->
+    <string name="hint_nombre">Nombre</string>
+    <string name="hint_telefono">Telefono</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_usuario">Usuario</string>
+    <string name="hint_email">Email</string>
 </resources>
