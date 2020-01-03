@@ -92,7 +92,9 @@ public class registroActivity extends AppCompatActivity {
                 mAuth.createUserWithEmailAndPassword(email,pass).addOnCompleteListener(registroActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(!task.isSuccessful()){
+                        if(!task.isSuccessful())
+                        {
+                            String p = task.getResult().toString();
                             Toast.makeText(registroActivity.this, "Error en registro", Toast.LENGTH_SHORT).show();
                         }
                         else

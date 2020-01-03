@@ -7,9 +7,9 @@ import androidx.annotation.StringRes;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
-import sa.soft.utopia.baxttermatch.Fragments.HomeFragment;
-import sa.soft.utopia.baxttermatch.Fragments.MatchesFragment;
-import sa.soft.utopia.baxttermatch.Fragments.PerfilFragment;
+import sa.soft.utopia.baxttermatch.Cards.CardsFragment;
+import sa.soft.utopia.baxttermatch.Matches.MatchesFragment;
+import sa.soft.utopia.baxttermatch.Perfil.PerfilFragment;
 import sa.soft.utopia.baxttermatch.R;
 
 /**
@@ -37,7 +37,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
                 PerfilFragment perfilFragment = new PerfilFragment();
                 return perfilFragment;
             case 1:
-                HomeFragment homeFragment = new HomeFragment();
+                CardsFragment homeFragment = new CardsFragment();
                 return homeFragment;
             case 2:
                 MatchesFragment matchesFragment = new MatchesFragment();

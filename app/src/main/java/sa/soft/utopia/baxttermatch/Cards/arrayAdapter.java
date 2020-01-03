@@ -1,4 +1,4 @@
-package sa.soft.utopia.baxttermatch;
+package sa.soft.utopia.baxttermatch.Cards;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -15,6 +15,7 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import sa.soft.utopia.baxttermatch.Entidades.cards;
+import sa.soft.utopia.baxttermatch.R;
 
 public class arrayAdapter extends ArrayAdapter<cards> {
     Context context;

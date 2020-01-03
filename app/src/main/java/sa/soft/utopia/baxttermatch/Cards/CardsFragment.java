@@ -1,4 +1,4 @@
-package sa.soft.utopia.baxttermatch.Fragments;
+package sa.soft.utopia.baxttermatch.Cards;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -6,9 +6,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -21,39 +24,43 @@ import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
 import sa.soft.utopia.baxttermatch.Entidades.cards;
 import sa.soft.utopia.baxttermatch.R;
-import sa.soft.utopia.baxttermatch.arrayAdapter;
-import sa.soft.utopia.baxttermatch.ui.main.PageViewModel;
 
 
-public class HomeFragment extends Fragment {
+public class CardsFragment extends Fragment {
 
-    private cards cards_data[];
-    private ArrayAdapter arrayAdapter;
-    private int i;
+    public cards cards_data[];
+    public ArrayAdapter arrayAdapter;
+    public int i;
+
+    public ImageButton btnYes, btnNo;
 
     //PageViewModel pageViewModel;
 
-    private FirebaseAuth mAuth;
+    public FirebaseAuth mAuth;
     String currentUID;
 
 
     ListView listView;
-    List<cards> rowItems;
+    public List<cards> rowItems;
 
-    DatabaseReference usersDb;
+    public DatabaseReference usersDb;
+
+    ConstraintLayout idParent;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+        idParent = view.findViewById(R.id.idParent);
+        btnNo = view.findViewById(R.id.btnNo);
+        btnYes= view.findViewById(R.id.btnYes);
 
         mAuth = FirebaseAuth.getInstance();
         currentUID = mAuth.getCurrentUser().getUid();
@@ -69,6 +76,7 @@ public class HomeFragment extends Fragment {
         final SwipeFlingAdapterView flingContainer= view.findViewById(R.id.frame);
 
         flingContainer.setAdapter(arrayAdapter);
+
 
         flingContainer.setFlingListener(new SwipeFlingAdapterView.onFlingListener() {
             @Override
@@ -103,7 +111,6 @@ public class HomeFragment extends Fragment {
             public void onScroll(float scrollProgressPercent) {
 
             }
-
         });
 
 
@@ -112,6 +119,20 @@ public class HomeFragment extends Fragment {
             @Override
             public void onItemClicked(int itemPosition, Object dataObject) {
                 Toast.makeText(getContext(), "Clicked!", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        btnNo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                flingContainer.getTopCardListener().selectLeft();
+            }
+        });
+
+        btnYes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                flingContainer.getTopCardListener().selectRight();
             }
         });
 
@@ -124,9 +145,14 @@ public class HomeFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if(dataSnapshot.exists()){
-                    Toast.makeText(getContext(), "Nueva coincidencia", Toast.LENGTH_LONG).show();
-                    usersDb.child(dataSnapshot.getKey()).child("Connections").child("Matches").child(currentUID).setValue(true);
-                    usersDb.child(currentUID).child("Connections").child("Matches").child(dataSnapshot.getKey()).setValue(true);
+
+                    Snackbar.make(getActivity().findViewById(R.id.idParent), "Nueva coincidencia",
+                            Snackbar.LENGTH_SHORT).show();
+
+                    String key = FirebaseDatabase.getInstance().getReference().child("Chat").push().getKey();
+
+                    usersDb.child(dataSnapshot.getKey()).child("Connections").child("Matches").child(currentUID).child("ChatId").setValue(key);
+                    usersDb.child(currentUID).child("Connections").child("Matches").child(dataSnapshot.getKey()).child("ChatId").setValue(key);
                 }
             }
 
@@ -182,8 +208,27 @@ public class HomeFragment extends Fragment {
         usersDb.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                if(dataSnapshot.exists() && !dataSnapshot.child("Connections").child("No").hasChild(currentUID)
-                        && !dataSnapshot.child("Connections").child("Yes").hasChild(currentUID)
+                if(dataSnapshot.child("Sexo").getValue()!=null){
+                    if(dataSnapshot.exists() && !dataSnapshot.child("Connections").child("Yes").hasChild(currentUID)
+                            && !dataSnapshot.child("Connections").child("No").hasChild(currentUID)
+                            && dataSnapshot.child("Sexo").getValue().toString().equals(oppositeUserSex)) {
+                        String imgUrl = "default";
+
+                        if(!dataSnapshot.child("ImagenPerfil").getValue().equals("default")){
+                            imgUrl = dataSnapshot.child("ImagenPerfil").getValue().toString();
+                        }
+                        cards item= new cards(dataSnapshot.getKey(), dataSnapshot.child("Nombre").getValue().toString(),
+                                imgUrl);
+                        rowItems.add(item);
+                        arrayAdapter.notifyDataSetChanged();
+                    }
+                }
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                if(dataSnapshot.exists() && !dataSnapshot.child("Connections").child("Yes").hasChild(currentUID)
+                        && !dataSnapshot.child("Connections").child("No").hasChild(currentUID)
                         && dataSnapshot.child("Sexo").getValue().toString().equals(oppositeUserSex)) {
                     String imgUrl = "default";
 
@@ -195,11 +240,6 @@ public class HomeFragment extends Fragment {
                     rowItems.add(item);
                     arrayAdapter.notifyDataSetChanged();
                 }
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
             }
 
             @Override
@@ -218,4 +258,7 @@ public class HomeFragment extends Fragment {
             }
         });
     }
+
 }
+
+

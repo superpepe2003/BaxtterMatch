@@ -3,21 +3,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.PerfilFragment">
+    tools:context=".Perfil.PerfilFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+<!--    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">-->
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:text="MATCHES"
-        android:textSize="36sp" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/recyclerViewMatches"
+            android:scrollbars="vertical">
+
+        </androidx.recyclerview.widget.RecyclerView>
+<!--</androidx.core.widget.NestedScrollView>-->
 
 </FrameLayout>

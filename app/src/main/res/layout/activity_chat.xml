@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Chat.ChatActivity"
+    android:background="@android:color/darker_gray">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/idTitulo"
+        android:minHeight="75sp"
+        android:background="@color/colorBaxtterEnd">
+
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:id="@+id/imgPerfilChat"
+            android:layout_width="80sp"
+            android:layout_height="80sp"
+            android:layout_marginStart="32dp"
+            android:layout_marginLeft="32dp"
+            android:src="@drawable/ic_matches"
+            app:civ_border_color="#696565"
+            app:civ_border_width="3dp"
+            app:civ_shadow="true"
+            app:civ_shadow_color="#A1AD94"
+            app:civ_shadow_radius="10"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txtNombreChat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20sp"
+            android:layout_marginStart="32dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="8dp"
+            android:text="text"
+            android:textColor="@color/common_google_signin_btn_text_dark_default"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@+id/imgPerfilChat"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">-->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/recyclerViewChat"
+        android:scrollbars="vertical"
+        android:layout_below="@id/idTitulo"
+        android:layout_above="@id/sendLayout">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <!--</androidx.core.widget.NestedScrollView>-->
+
+    <LinearLayout
+        android:id="@+id/sendLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <EditText
+            android:layout_weight="0.8"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="20sp"
+            android:elevation="2dp"
+            android:background="@color/common_google_signin_btn_text_dark_default"
+            android:layout_margin="10sp"
+            android:hint="Mensaje..."
+            android:textColor="@android:color/black"
+            android:inputType="textMultiLine"
+            android:id="@+id/txtMensaje"/>
+
+        <Button
+            android:layout_weight="0.2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Enviar"
+            android:id="@+id/btnEnviar"
+            android:background="@drawable/btn_principal"/>
+    </LinearLayout>
+
+</RelativeLayout>

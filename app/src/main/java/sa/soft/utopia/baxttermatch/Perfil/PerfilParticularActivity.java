@@ -1,8 +1,9 @@
-package sa.soft.utopia.baxttermatch;
+package sa.soft.utopia.baxttermatch.Perfil;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import sa.soft.utopia.baxttermatch.R;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -114,7 +115,7 @@ public class PerfilParticularActivity extends AppCompatActivity {
                         imgPerfilImagenTexto=map.get("ImagenPerfil").toString();
                         switch (imgPerfilImagenTexto){
                             case "default":
-                                Glide.with(getApplication()).load(R.drawable.ic_matches).into(imgPerfilImagen);
+                                Glide.with(getApplication()).load(R.mipmap.ic_launcher).into(imgPerfilImagen);
                                 break;
                             default:
                                 Glide.with(getApplication()).load(imgPerfilImagenTexto).into(imgPerfilImagen);
